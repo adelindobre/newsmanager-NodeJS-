@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap 3 Responsive Layout Example</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<style type="text/css">
+    .header{
+        height: 200px;
+        width: 100px;
+        background: #C80707;
+    }
+    body{
+        padding-top: 70px;
+    }
+</style>
+</head>
+<body>
+
+<nav id="myNavbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">News Manager</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/" >
+                <span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li><a href="/buy">
+                <span class="glyphicon glyphicon-euro"></span> Buy</a></li>
+                <li><a href="/trans">
+                <span class="glyphicon glyphicon-list"></span> Transactions</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4>Alege Ziar:</h4></div>
+            <div class="panel-body">
+                 <form method="POST" action="/getPrice" role="form">
+                    <div class="row">
+                        <div class="form-group" method="post">
+                            <label for="input" class="control-label col-md-2"><h4>Nume solicitant:</h4></label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="nume" name="nume">
+                            </div>                    
+                        </div>             
+                    </div>
+                    <div class="row">
+                        <div class="form-group" method="post">
+                            <label for="input" class="control-label col-md-2"><h4>Prenume solicitant:</h4></label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="prenume" name="prenume">
+                            </div>                        
+                        </div>             
+                    </div>
+                    <div class="row">
+                        <div class="form-group" method="post">
+                            <label for="input" class="control-label col-md-2"><h4>Nume publicatie:</h4></label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control"  id="publicatie" name="publicatie">
+                            </div>                        
+                        </div>             
+                    </div>
+                    <div class="row">
+                        <div class="form-group" method="post">
+                            <label for="input" class="control-label col-md-2"><h4>Categorie:</h4></label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="categorie" name="categorie">
+                            </div>                        
+                        </div>             
+                    </div>
+                     <div class="row">
+                        <div class="form-group" method="post">
+                            <label for="input" class="control-label col-md-2"><h4>Cantitate:</h4></label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control"  id="cantitate" name="cantitate">
+                            </div>                        
+                        </div>             
+                    </div>
+                    <div class="row">
+                         <div class="form-group">
+                            <label for="input" class="control-label col-md-2"><h4>Tip:</h4></label>
+                            <div class="col-md-9">
+                                <select class="form-control input-lg">
+                                    <option>Platita</option>
+                                    <option>Gratuita</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group" method="post">
+                           <label for="input" class="control-label col-md-2"><h4>Add-On:</h4></label>
+                            <div class="checkbox">
+                                &emsp;
+                                <label><input type="checkbox" name="carte"> Carte &emsp;</label>
+                                 <label><input type="checkbox" name="cd"> CD</label>
+                            </div>
+                            <button type="submit" class="btn btn-default">Get Price </button>
+                        </div>
+                    </div>
+                </form>
+                <form action="/register" >
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="input" class="control-label col-md-2"><h4>Pret final: {{ price }} lei</h4></label>
+                            <button type="submit" class="btn btn-primary">Do Transaction</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div id="mypanel">    
+                        </div>
+                    </div>
+                </div>
+                <!--  <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">200 OK</h3>
+                    </div>
+                    <div class="panel-body">The server successfully processed the request.</div>
+                </div> -->
+                <script>
+                    var stare = {{ esuat }};
+                    if (stare == false){
+                        var d = document.getElementById("mypanel");
+                        d.className = "panel panel-success";
+                        var phead = document.createElement("div");
+                        phead.className = "panel-heading";
+                        var title = document.createElement("h3");
+                        title.className = "panel-title";
+                        var textnode = document.createTextNode("Tranzactie efectuata cu succes");
+                        title.appendChild(textnode);
+                        phead.appendChild(title);
+                        d.appendChild(phead);
+
+                        var pbody = document.createElement("div");
+                        pbody.className = "panel-body";
+                        var contentnode = document.createTextNode("Detaliile tranzactiei efectuate se pot vizuala in pagina 'Transactions'.");
+                        pbody.appendChild(contentnode);
+                        d.appendChild(pbody);
+                    }
+                    if(stare == true){
+                        var d = document.getElementById("mypanel");
+                        d.className = "panel panel-danger";
+                        var phead = document.createElement("div");
+                        phead.className = "panel-heading";
+                        var title = document.createElement("h3");
+                        title.className = "panel-title";
+                        var textnode = document.createTextNode("Tranzactie imposibila");
+                        title.appendChild(textnode);
+                        phead.appendChild(title);
+                        d.appendChild(phead);
+
+                        var pbody = document.createElement("div");
+                        pbody.className = "panel-body";
+                        var contentnode = document.createTextNode("Aceasta tranzactie nu se poate realiza deoarece totalul vanzarilor nu depaseste 10 000 de exemplare.");
+                        pbody.appendChild(contentnode);
+                        d.appendChild(pbody);
+                    }
+                </script>    
+
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-12">
+            <footer>
+                <p>© Copyright 2016 Adelin Dobre</p>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>                                     
